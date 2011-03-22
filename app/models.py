@@ -51,4 +51,14 @@ class Snippet(models.Model):
         self.description_html = markdown(self.description)
         self.highlighted_code = self.highlight()
         super(Snippet, self).save(force_insert, force_update)
+    
+    def get_absolute_url(self):
+        return ('app_snippet_detail', (), { 'object.id' : self.id })
+    get_absolute_url = models.permalink(get_absolute_url)
+
+    def highlight(self):
+        return highlight(self.code,
+                         self.language.get_lexer(),
+                         formatters.HtmlFormatter(lineos=True))
+
 
