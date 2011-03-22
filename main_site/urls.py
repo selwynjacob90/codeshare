@@ -13,4 +13,7 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
+
+    #codeshare url's
+    (r'codeshare/snippets/', include('app.urls.snippet')),
 )
