@@ -15,5 +15,7 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
 
     #codeshare url's
-    (r'codeshare/snippets/', include('app.urls.snippet')),
+    (r'^snippets/', include('app.urls.snippet')),
+    (r'^languages/', include('app.urls.languages')),
+    (r'^popular/', include('app.urls.popular')),
 )
