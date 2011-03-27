@@ -6,14 +6,12 @@ from django.db.models import Count
 class SnippetManager(models.Manager):
     """Custom manager for Snippet Model
     """
-    
     def top_authors(self):
         return User.objects.annotate(score=Count('snippet')).order_by('score')
 
 class LanguageManager(models.Manager):
     """Custom Manager for Language Model
     """
-
     def top_languages(self):
         return self.annotate(score=Count('snippet')).order_by('score')
 
