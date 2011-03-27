@@ -6,6 +6,9 @@ from tagging.fields import TagField
 from markdown import markdown
 import datetime
 
+from app import managers
+
+
 class Language(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
@@ -37,6 +40,7 @@ class Snippet(models.Model):
     tags = TagField()
     pub_date = models.DateTimeField(editable=False)
     updated_date = models.DateTimeField(editable=False)
+    objects = managers.SnippetManager()
 
     class Meta:
         ordering = ['-pub_date']
