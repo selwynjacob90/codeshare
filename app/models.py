@@ -14,6 +14,7 @@ class Language(models.Model):
     slug = models.SlugField(unique=True)
     language_code = models.CharField(max_length=50)
     mime_type = models.CharField(max_length=100)
+    objects = manager.LanguageManager()
 
     class Meta:
         ordering = ['name']
