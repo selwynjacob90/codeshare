@@ -2,6 +2,7 @@ from django.conf.urls.defaults import *
 from django.views.generic.list_detail import object_list, object_detail
 
 from app.models import Snippet
+from app.views.snippets import add_snippet
 
 snippet_info = { 'queryset' : Snippet.objects.all() }
 
@@ -15,4 +16,5 @@ urlpatterns = patterns('',
                            object_detail,
                            snippet_info,
                            name = 'app_snippet_detail'),
+                       url(r'^add/$', add_snippet, name='app_snippet_add'),
                      )
