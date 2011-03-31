@@ -1,0 +1,9 @@
+ <h2>{% if add %}Add a{% else %}Edit your{% endif %} Snippet</h2>
+
+    <p>Use the form below to {% if add %}add a{% else %}edit your{% endif %} snippet; all fields are required.</p>
+
+    <form method="post" action="">{% csrf_token %}
+        {{ form.as_p }}
+        <p><input type="submit" value="Submit"></p>
+    </form>
+
