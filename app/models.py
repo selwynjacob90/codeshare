@@ -81,4 +81,22 @@ class Snippet(models.Model):
         return highlight(self.code,
                          self.language.get_lexer(),
                          formatters.HtmlFormatter(lineos=True))
+                         
+class Bookmark(models.Model):
+    snippet = models.ForeignKey(Snippet)
+    user = models.ForeignKey(User, related_name='app_bookmarks')
+    date = models.DateTimeField(editable=False)
+    
+    class Meta:
+        ordering = ['-date']
+    
+    def __unicode__(self):
+        return "%s bookmarked by %s" % (self.snippet, self.user)
+
+    def save(self, force_insert=False, force_update=False):
+        if not self.id:
+            self.date = datetime.datetime.now()
+        super(Bookmark, self).save(force_insert, force_update)
+
+
 
