@@ -13,9 +13,12 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
+    (r'^site_media/(?P<path>.*)$', 'django.views.static.serve',
+        {'document_root': '/home/slingshot316/my-python-code/django-projects/codeshare/app/content'}),
 
     #codeshare url's
     (r'^snippets/', include('app.urls.snippets')),
     (r'^languages/', include('app.urls.languages')),
     (r'^popular/', include('app.urls.popular')),
+    (r'^$', include('app.urls.home')),
 )
