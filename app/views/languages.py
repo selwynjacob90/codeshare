@@ -10,5 +10,5 @@ def language_detail(request, slug):
                        queryset=language.snippet_set.all(),
                        paginate_by=20,
                        template_name='app/language_detail.html',
-                       extra_content = { 'language' : language })
+                       extra_context = { 'language' : language })
 
