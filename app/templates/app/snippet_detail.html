@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %} | Snippet | {{ object.title }}{% endblock %}
+
+
+{% block content %}
+    <h2>{{ object.title }}</h2>
+
+    <ul>
+    <li>Published: {{ object.pub_date }}</li>
+    <li>Updated: {{ object.updated_date }}</li>
+    <li>Language:  <a href="{{ object.language.get_absolute_url }}">{{ object.language }}</a></li>
+    <li>Author: {{ object.author }}</li>
+    <li>Tags: 
+        {% if object.etags.count %}
+                {% for tag in object.etags %}
+                    <a href="{% url cab_snippet_archive_tag tag.name %}">{{ tag.name }}</a>
+                    {% if forloop.last %}{% else %}
+                        {% ifequal forloop.revcounter0 1 %}and {% else %}, {% endifequal %}
+                    {% endif %}
+                {% endfor %}
+        {% else %}
+            This Snippet doesn't have any tags.
+        {% endif %}
+    </li>
+    </ul>
+    
+    
+    
+    </p>
+
+{% endblock %}
+
