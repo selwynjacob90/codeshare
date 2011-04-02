@@ -25,6 +25,15 @@
     </li>
     </ul>
     
+    {% if_bookmarked user object %}
+        <form method="post" action="{% url app_bookmark_delete object.id %}">
+            <p><input type="submit" value="Delete bookmark"></p>
+        </form>
+    {% else %}
+        <p><a href="{% url app_bookmark_add object.id %}">Add bookmark</a></p>
+    {% endif_bookmarked %}
+
+    
     
     
     </p>
