@@ -27,8 +27,7 @@ class Language(models.Model):
     def get_absolute_url(self):
         """Return the url of the requested language object.
         """
-        return ('cab_language_detail', (), { 'slug': self.slug })
-    get_absolute_url = models.permalink(get_absolute_url)
+        return "/languages/%s/" %self.slug
 
     def get_lexer(self):
         """Returns lexer for the requested language.
@@ -70,8 +69,7 @@ class Snippet(models.Model):
     def get_absolute_url(self):
         """Returns url for the request snippet object.
         """
-        return ('app_snippet_detail', (), { 'object.id' : self.id })
-    get_absolute_url = models.permalink(get_absolute_url)
+        return "/snippets/%s/" %self.id
 
     def highlight(self):
         """Returns highlighted code from pygments.highlight
@@ -83,5 +81,4 @@ class Snippet(models.Model):
         return highlight(self.code,
                          self.language.get_lexer(),
                          formatters.HtmlFormatter(lineos=True))
-
 
