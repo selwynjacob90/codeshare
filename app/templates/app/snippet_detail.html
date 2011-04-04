@@ -14,7 +14,7 @@
     <li>Tags: 
         {% if object.etags.count %}
                 {% for tag in object.etags %}
-                    <a href="{% url cab_snippet_archive_tag tag.name %}">{{ tag.name }}</a>
+                    <a href="{% url app_snippet_archive_tag tag.name %}">{{ tag.name }}</a>
                     {% if forloop.last %}{% else %}
                         {% ifequal forloop.revcounter0 1 %}and {% else %}, {% endifequal %}
                     {% endif %}
@@ -25,18 +25,29 @@
     </li>
     </ul>
     
+   {% load snippets %}
     {% if_bookmarked user object %}
         <form method="post" action="{% url app_bookmark_delete object.id %}">
             <p><input type="submit" value="Delete bookmark"></p>
         </form>
     {% else %}
         <p><a href="{% url app_bookmark_add object.id %}">Add bookmark</a></p>
+
     {% endif_bookmarked %}
+
+    {% load markup %}
+    
+    <p>{{ object.description_html|markdown }}</p>
+    
+    <p>
+    {{ object.highlighted_code|markdown }}
+    </p>
+
 
     
     
     
-    </p>
+    
 
 {% endblock %}
 
