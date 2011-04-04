@@ -1,11 +1,9 @@
 {% extends "base.html" %}
-
 {% block title %} | Delete Bookmark?{% endblock %}
-
 
 {% block content %}
     <h2>Delete Bookmark?</h2>
-
+    
     <ul>
     <li>Title: {{ snippet.title }}</li>
     <li>Published: {{ snippet.pub_date }}</li>
@@ -13,10 +11,10 @@
     <li>Language: {{ snippet.language }}</li>
     <li>Author: {{ snippet.author }}</li>
     </ul>
-
+    
     <form method="post" action="">
         <p><input type="submit" value="Delete bookmark"></p>
     </form>
-    
+
 {% endblock %}
 

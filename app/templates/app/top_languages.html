@@ -1,18 +1,18 @@
 {% extends "base.html" %}
-{% block title %} | Your Bookmarks{% endblock %}
+{% block title %} | Top Languages{% endblock %}
 
 
 {% block content %}
-    <h2>Your Bookmarks</h2>
+    <h2>Top Languages</h2>
 
     {% if object_list %}
         <ol>
-        {% for bookmark in object_list %}
-            <li><a href="{{ bookmark.snippet.get_absolute_url }}">{{ bookmark.snippet.title }}</a></li>
+        {% for language in object_list %}
+            <li><a href="{{ language.get_absolute_url }}">{{ language.name }}</a></li>
         {% endfor %}
         </ol>
     {% else %}
-        <p>There are no Snippets to display.</p>
+        <p>There are no Authors to display.</p>
     {% endif %}
     
     <p>

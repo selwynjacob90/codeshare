@@ -2,16 +2,17 @@
 
 {% block title %}{% endblock %}
 
-
 {% block content %}
     <h2>Home</h2>
-
-    <p>[An extra page I added to make it easier to get to everything.]</p>
-    
+    <p>This is the temporary homepage</p>
     <ul>
     <li><a href="{% url app_language_list %}">Languages</a></li>
     <li><a href="{% url app_snippet_list %}">Snippets</a></li>
+    <li><a href="{% url app_top_authors %}">Top Authors</a></li>
+    <li><a href="{% url app_top_languages %}">Top Languages</a></li>
+    <li><a href="{% url app_most_bookmarked %}">Most Bookmarked</a></li>
+    <li><a href="{% url app_top_rated %}">Top Rated</a></li>
+    <li><a href="{% url app_user_bookmarks %}">User bookmarks</a></li>   
     </ul>
-    
 {% endblock %}
 

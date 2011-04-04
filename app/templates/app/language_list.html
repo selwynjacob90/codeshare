@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block title %} | Languages{% endblock %}
 
-
 {% block content %}
     <h2>Languages</h2>
     
@@ -15,7 +14,6 @@
         <p>There are no Languages to display.</p>
     {% endif %}
     
-    <!-- Tweaks from http://www.protocolostomy.com/2009/08/09/django-pygments-templates-code-sharing-and-design/ -->
     <p>
     {% if page_obj.has_previous %}
         <a href="?page={{ page_obj.previous_page_number }}">Previous page</a>

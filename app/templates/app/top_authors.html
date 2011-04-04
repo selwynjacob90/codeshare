@@ -1,1 +1,29 @@
-<p> this is a test page for popular authors </p>
+{% extends "base.html" %}
+{% block title %} | Top Authors{% endblock %}
+
+
+{% block content %}
+    <h2>Top Authors</h2>
+
+    {% if object_list %}
+        <ol>
+        {% for author in object_list %}
+            <li>{{ author.username }}</li>
+        {% endfor %}
+        </ol>
+    {% else %}
+        <p>There are no Authors to display.</p>
+    {% endif %}
+    
+    <p>
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">Previous page</a>
+    {% endif %}
+    {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Next page</a>
+    {% endif %}
+    </p>
+    
+{% endblock %}
+

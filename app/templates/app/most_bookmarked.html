@@ -1,14 +1,14 @@
 {% extends "base.html" %}
-{% block title %} | Your Bookmarks{% endblock %}
+{% block title %} | Most Bookmarked{% endblock %}
 
 
 {% block content %}
-    <h2>Your Bookmarks</h2>
+    <h2>Most Bookmarked</h2>
 
     {% if object_list %}
         <ol>
-        {% for bookmark in object_list %}
-            <li><a href="{{ bookmark.snippet.get_absolute_url }}">{{ bookmark.snippet.title }}</a></li>
+        {% for snippet in object_list %}
+            <li><a href="{{ snippet.get_absolute_url }}">{{ snippet.title }}</a></li>
         {% endfor %}
         </ol>
     {% else %}

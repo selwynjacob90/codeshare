@@ -1,4 +1,8 @@
- <h2>{% if add %}Add a{% else %}Edit your{% endif %} Snippet</h2>
+{% extends "cab/base.html" %}
+{% block title %} | {% if add %}Add a{% else %}Edit your{% endif %} Snippet{% endblock %}
+
+{% block content %}
+    <h2>{% if add %}Add a{% else %}Edit your{% endif %} Snippet</h2>
 
     <p>Use the form below to {% if add %}add a{% else %}edit your{% endif %} snippet; all fields are required.</p>
 
@@ -7,3 +11,4 @@
         <p><input type="submit" value="Submit"></p>
     </form>
 
+{% endblock %}
