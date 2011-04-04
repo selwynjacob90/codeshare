@@ -39,8 +39,8 @@
        <p>You rated this snippet {{ rating.get_rating_display }}.</p>
    {% else %}
        <p>Rate this snippet:
-            <a href="{% url cab_snippet_rate object.id %}?rating=1">useful</a> or 
-            <a href="{% url cab_snippet_rate object.id %}?rating=-1">not useful</a>.</p>  
+            <a href="{% url app_snippet_rate object.id %}?rating=1">useful</a> or 
+            <a href="{% url app_snippet_rate object.id %}?rating=-1">not useful</a>.</p>  
    {% endif_rated %}
 
    {% load markup %}
