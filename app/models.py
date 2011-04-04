@@ -93,10 +93,10 @@ class Bookmark(models.Model):
     def __unicode__(self):
         return "%s bookmarked by %s" % (self.snippet, self.user)
 
-    def save(self, force_insert=False, force_update=False):
+    def save(self, **kwargs):
         if not self.id:
             self.date = datetime.datetime.now()
-        super(Bookmark, self).save(force_insert, force_update)
+        super(Bookmark, self).save(**kwargs)
 
 
 
