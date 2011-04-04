@@ -11,4 +11,7 @@ urlpatterns = patterns('',
                        url(r'^bookmarks/$',
                            popular.most_bookmarked, 
                            name='app_most_bookmarked'),
+                       url(r'^ratings/$', 
+                           popular.top_rated, 
+                           name='app_top_rated'),
                       )
