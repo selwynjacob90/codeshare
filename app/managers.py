@@ -12,6 +12,9 @@ class SnippetManager(models.Manager):
     def most_bookmarked(self):
             return self.annotate(score=Count('bookmark')).order_by('-score')
 
+    def top_rated(self):
+            return self.annotate(score=Sum('rating')).order_by('score')
+
 class LanguageManager(models.Manager):
     """Custom Manager for Language Model
     """
