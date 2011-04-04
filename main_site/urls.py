@@ -21,5 +21,6 @@ urlpatterns = patterns('',
     (r'^languages/', include('app.urls.languages')),
     (r'^popular/', include('app.urls.popular')),
     (r'^bookmarks/', include('app.urls.bookmarks')),
+    (r'^rating/', include('app.urls.ratings')),
     (r'^$', include('app.urls.home')),
 )
