@@ -1,10 +1,12 @@
 from django.db import models
+from django.db.models import Sum
 from django.contrib.auth.models import User
 
 from pygments import formatters, highlight, lexers
 from tagging.fields import TagField
 from markdown import markdown
 import datetime
+import tagging
 
 from app import managers
 
@@ -98,5 +100,25 @@ class Bookmark(models.Model):
             self.date = datetime.datetime.now()
         super(Bookmark, self).save(**kwargs)
 
-
+class Rating(models.Model):
+    RATING_UP = 1
+    RATING_DOWN = -1
+    RATING_CHOICES = ((RATING_UP, 'useful'),
+                      (RATING_DOWN, 'not useful'))
+    snippet = models.ForeignKey(Snippet)
+    user = models.ForeignKey(User, related_name='app_rating')
+    rating = models.IntegerField(choices=RATING_CHOICES)
+    date = models.DateTimeField()
+    
+    def __unicode__(self):
+        return "%s rating %s (%s)" % (self.user, self.snippet, self.get_rating_display())
+    
+    def save(self, **kwargs):
+        if not self.id:
+            self.date = datetime.datetime.now()
+        super(Rating, self).save(**kwargs)
+    
+    def get_score(self):
+        return self.rating_set.aggregate(Sum('rating'))
+        
 
