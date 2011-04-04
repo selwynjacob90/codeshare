@@ -24,4 +24,9 @@ def most_bookmarked(request):
     return object_list(request, queryset=Snippet.objects.most_bookmarked(),
                             template_name='app/most_bookmarked.html',
                                                     paginate_by=20)
+                                                    
+def top_rated(request):
+    return object_list(request, queryset=Snippet.objects.top_rated(),
+                        template_name='app/top_rated.html',
+                        paginate_by=20)
 
