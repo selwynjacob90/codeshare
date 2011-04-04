@@ -1,5 +1,5 @@
 from django import template
-from app.models import Bookmark, Rating
+from app.models import Bookmark 
 
 def do_if_bookmarked(parser, token):
     bits = token.contents.split()
