@@ -8,4 +8,7 @@ urlpatterns = patterns('',
                        url(r'^languages/$',
                            popular.top_languages,
                            name='app_top_languages'),
+                       url(r'^bookmarks/$',
+                           popular.most_bookmarked, 
+                           name='app_most_bookmarked'),
                       )
