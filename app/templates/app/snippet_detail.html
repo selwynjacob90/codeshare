@@ -11,19 +11,15 @@
     <li>Language:  <a href="{{ object.language.get_absolute_url }}">{{ object.language }}</a></li>
     <li>Author: {{ object.author }}</li>
     <li>Tags: 
-        {% if object.etags.count %}
-                {% for tag in object.etags %}
-                    <a href="{% url app_snippet_archive_tag tag.name %}">{{ tag.name }}</a>
-                    {% if forloop.last %}{% else %}
-                        {% ifequal forloop.revcounter0 1 %}and {% else %}, {% endifequal %}
-                    {% endif %}
-                {% endfor %}
-        {% else %}
-            This Snippet doesn't have any tags.
-        {% endif %}
+        {% for tag in object.get_tags %}
+           <a href="{% url app_snippet_archive_tag tag %}">{{ tag }}</a>
+           {% if forloop.last %}{% else %}
+               {% ifequal forloop.revcounter0 1 %}and {% else %}, {% endifequal %}
+           {% endif %}
+        {% endfor %}
     </li>
+
     </ul>
-    
    {% load snippets %}
    {% if_bookmarked user object %}
         <form method="post" action="{% url app_bookmark_delete object.id %}">
