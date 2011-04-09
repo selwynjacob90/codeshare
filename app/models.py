@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 from pygments import formatters, highlight, lexers
 from tagging.fields import TagField
+from tagging.models import Tag
 from markdown import markdown
 import datetime
 import tagging
@@ -84,6 +85,9 @@ class Snippet(models.Model):
                          self.language.get_lexer(),
                          formatters.HtmlFormatter(lineos=True))
                          
+    def get_tags(self):
+        return Tag.objects.get_for_object(self) 
+
 class Bookmark(models.Model):
     snippet = models.ForeignKey(Snippet)
     user = models.ForeignKey(User, related_name='app_bookmarks')
