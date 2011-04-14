@@ -23,5 +23,7 @@ urlpatterns = patterns('',
     (r'^bookmarks/', include('app.urls.bookmarks')),
     (r'^rating/', include('app.urls.ratings')),
     (r'^tags/', include('app.urls.tags')),
-    (r'^$', include('app.urls.home')),
+  #  (r'signup/', 'app.views.signup_form.signup_form'),
+  #  (r'signup_check', 'app.views.signup.signup'),
+    (r'^$', 'app.views.snippets.add_snippet'),
 )
