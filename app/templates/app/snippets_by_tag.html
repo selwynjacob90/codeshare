@@ -3,11 +3,12 @@
 {% block title %} | Snippets tagged with '{{ tag.name }}'{% endblock %}
 
 
-{% block content %}
-    <h2>Snippets tagged with '{{ tag.name }}'</h2>
+{% block main %}
+<div id="main">
+     <h2> <span class="green"> Snippets tagged with </span>'{{ tag.name }}'</h2>
 
     {% for object in object_list %}
       <p><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></p>
     {% endfor %}
-
+</div>
 {% endblock %}

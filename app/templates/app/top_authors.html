@@ -2,8 +2,9 @@
 {% block title %} | Top Authors{% endblock %}
 
 
-{% block content %}
-    <h2>Top Authors</h2>
+{% block main %}
+<div id="main">
+    <h1 class="green">Top Authors</h1>
 
     {% if object_list %}
         <ol>
@@ -24,6 +25,6 @@
         <a href="?page={{ page_obj.next_page_number }}">Next page</a>
     {% endif %}
     </p>
-    
+</div>    
 {% endblock %}
 

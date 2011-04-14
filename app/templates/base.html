@@ -1,19 +1,89 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Code Sharing {% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="/site_media/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/site_media/css/codeshare.css" type="text/css" />
 </head>
-<body id="body">
-    <div id="header">
-        <h1 id="branding">Code sharing</h1>
-        <p><a href="{% url app_home %}">Home page</a></p> 
-    </div>
-    
-    <div id="content">
-        {% block content %}
-        {% endblock %}
-    </div>
-    
+<body>
+{% block body %}
+<!-- wrap starts here -->
+<div id="wrap">
+	
+	<div id="header">				
+			
+		<h1 id="logo">Code<span class="green">share</span><span class="gray"></span></h1>	
+		<h2 id="slogan">code | paste | share</h2> 
+		
+		<form method="post" class="searchform" action="#">
+			<p><input type="text" name="search_query" class="textbox" />
+  			<input type="submit" name="search" class="button" value="Search" /></p>
+		</form>
+			
+		<!-- Menu Tabs -->
+		<ul>
+			<li id="current"><a href="/snippets/add"><span>New Paste</span></a></li>
+			<li><a href="index.html"><span>Login</span></a></li>
+			<li><a href="index.html"><span>Register</span></a></li>
+			<li><a href="index.html"><span>About</span></a></li>			
+		</ul>	
+													
+	</div>	
+				
+	<!-- content-wrap starts here -->
+	<div id="content-wrap">		
+											
+	<img src="/site_media/images/header.jpg" width="820" height="120" alt="headerphoto" class="no-border" />
+		
+		<div id="sidebar" >							
+				
+			<h1>Sidebar Menu</h1>
+			<ul class="sidemenu">
+				<li><a href="/">Home</a></li>
+        <li><a href="{% url app_snippet_list %}">Browse</a></li>
+        <li><a href="{% url app_language_list %}">Languages</a></li>
+        <li><a href="{% url app_top_rated %}">Top Rated</a></li>
+        <li><a href="{% url app_top_languages %}">Top Languages</a></li>
+        <li><a href="{% url app_top_authors %}">Top Authors</a></li>
+        <li><a href="{% url app_most_bookmarked %}">Most Bookmarked</a></li>
+        <li><a href="{% url app_user_bookmarks %}">User bookmarks</a></li>
+			</ul>		
+			
+			<h1>Note</h1>
+			<p>&quot;Please register to be able to update,bookmark and rate snippets.&quot;</p>		
+				
+		
+		</div>
+		{% block main	%}
+    {% endblock %}
+	<!-- content-wrap ends here -->		
+	</div>
+
+<!-- footer starts here -->	
+<div id="footer">
+	
+	<div class="footer-left">
+		<p class="align-left">			
+		&copy; 2011 <strong>Selwyn Jacob</strong> |
+		Contact <a href="mailto:selwynjacob90@gmail.com">selwynjacob90@gmail.com</a> 
+		</p>		
+	</div>
+	
+	<div class="footer-right">
+		<p class="align-right">
+		<a href="index.html">Home</a>&nbsp;|&nbsp;
+  		<a href="index.html">SiteMap</a>&nbsp;|&nbsp;
+   	<a href="index.html">RSS Feed</a>
+		</p>
+	</div>
+	
+</div>
+<!-- footer ends here -->
+	
+<!-- wrap ends here -->
+</div>
+{% endblock %}
 </body>
 </html>
 

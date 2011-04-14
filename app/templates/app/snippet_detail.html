@@ -1,51 +1,66 @@
 {% extends "base.html" %}
+
 {% block title %} | Snippet | {{ object.title }}{% endblock %}
 
 
-{% block content %}
-    <h2>{{ object.title }}</h2>
+{% block main %}
+<script type="text/javascript">
+function open_del() {
+    window.open("{% url app_bookmark_delete object.id %}")
+}
+function open_add() {
+    window.open("{% url app_bookmark_add object.id %}")
+}
+
+</script>
+<div id="main">
+    <h1> Title: <span class="green">{{ object.title }}</span></h1>
 
     <ul>
-    <li>Published: {{ object.pub_date }}</li>
     <li>Updated: {{ object.updated_date }}</li>
-    <li>Language:  <a href="{{ object.language.get_absolute_url }}">{{ object.language }}</a></li>
+    <li>Language:  <a class="green" href="{{ object.language.get_absolute_url }}">{{ object.language }}</a></li>
     <li>Author: {{ object.author }}</li>
-    <li>Tags: 
+    <li class="links">Tags: 
         {% for tag in object.get_tags %}
-           <a href="{% url app_snippet_archive_tag tag %}">{{ tag }}</a>
+           <a class="green" href="{% url app_snippet_archive_tag tag %}">{{ tag }}</a>
            {% if forloop.last %}{% else %}
                {% ifequal forloop.revcounter0 1 %}and {% else %}, {% endifequal %}
            {% endif %}
         {% endfor %}
-    </li>
-
-    </ul>
-   {% load snippets %}
-   {% if_bookmarked user object %}
-        <form method="post" action="{% url app_bookmark_delete object.id %}">
-            <p><input type="submit" value="Delete bookmark"></p>
-        </form>
-   {% else %}
-        <p><a href="{% url app_bookmark_add object.id %}">Add bookmark</a></p>
-
-   {% endif_bookmarked %}
     
-   {% if_rated user object %}
-       {% get_rating user object as rating %}
-       <p>You rated this snippet {{ rating.get_rating_display }}.</p>
-   {% else %}
-       <p>Rate this snippet:
-            <a href="{% url app_snippet_rate object.id %}?rating=1">useful</a> or 
-            <a href="{% url app_snippet_rate object.id %}?rating=-1">not useful</a>.</p>  
-   {% endif_rated %}
+
+   {% load snippets %}
+   
+
 
    {% load markup %}
     
-    <p>{{ object.description_html|markdown }}</p>
+    {{ object.description_html|markdown }}    
+    <div class="code">
     
-    <p>
    {{ object.highlighted_code|markdown }}
-    </p>
-
+   
+   </div>
+   <h3 style="float:right;"><a href="/snippets/edit/{{ object.id }}/">Edit Snippet</a></h3><br />
+ 			<p class="post-footer align-right">
+ 			 {% if_rated user object %}
+         {% get_rating user object as rating %}
+         <a href="" class="comments"/> {{ rating.get_rating_display }}</a>
+       {% else %}
+            <a href="{% url app_snippet_rate object.id %}?rating=1" class="comments">useful</a> or 
+            <a href="{% url app_snippet_rate object.id %}?rating=-1" class="comments">not useful</a> 
+       {% endif_rated %}					
+				
+				{% if_bookmarked user object %}
+				<input type="button" value="Delete bookmark" class="readmore" onclick="open_del()">
+        {% else %}
+				<input type="button" class="readmore" value="bookmark" onclick="open_add()" />
+				{% endif_bookmarked %}
+ 			  <span class="date">{{ object.pub_date }}</span>	
+			</p>
+			
+    
+			
+</div>
 {% endblock %}
 

@@ -2,7 +2,8 @@
 {% block title %} | Your Bookmarks{% endblock %}
 
 
-{% block content %}
+{% block main %}
+<div id="main">
     <h2>Your Bookmarks</h2>
 
     {% if object_list %}
@@ -24,6 +25,6 @@
         <a href="?page={{ page_obj.next_page_number }}">Next page</a>
     {% endif %}
     </p>
-    
+</div>    
 {% endblock %}
 

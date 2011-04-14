@@ -2,8 +2,9 @@
 {% block title %} | Top Rated{% endblock %}
 
 
-{% block content %}
-    <h2>Top Rated</h2>
+{% block main %}
+<div id="main">
+    <h1 class="green" >Top Rated</h1>
 
     <p>Snippets Rating </p>
     
@@ -26,6 +27,6 @@
         <a href="?page={{ page_obj.next_page_number }}">Next page</a>
     {% endif %}
     </p>
-    
+</div>    
 {% endblock %}
 

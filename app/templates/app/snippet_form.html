@@ -1,14 +1,18 @@
+
 {% extends "base.html" %}
-{% block title %} | {% if add %}Add a{% else %}Edit your{% endif %} Snippet{% endblock %}
 
-{% block content %}
-    <h2>{% if add %}Add a{% else %}Edit your{% endif %} Snippet</h2>
+{% block title %}{% if add %}| New Paste {% else %}|Edit Your Paste{% endif %}{% endblock %}
+	
 
-    <p>Use the form below to {% if add %}add a{% else %}edit your{% endif %} snippet; all fields are required.</p>
-
-    <form method="post" action="">{% csrf_token %}
-        {{ form.as_p }}
-        <p><input type="submit" value="Submit"></p>
-    </form>
-
+{% block main %}
+<div id="main">	
+  		<a name="TemplateInfo"></a>
+			<h1>New <span class="green">Paste</span></h1>
+      <p>Use the form below to {% if add %}add a{% else %}edit your{% endif %} snippet; all fields are required.</p>
+      <form method="post" action="">{% csrf_token %}
+            {{ form.as_p }}
+             <p><input type="submit" value="Paste it!"></p>
+      </form>
+</div>	
 {% endblock %}
+</html>
