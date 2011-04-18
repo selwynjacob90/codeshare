@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block main %}
+<div id="main">
+{% if account %}
+
+<p>Account successfully activated</p>
+
+<p><a href="{% url auth_login %}">Log in</a></p>
+
+{% else %}
+
+<p>Account activation failed</p>
+
+{% endif %}
+</div>
+{% endblock %}

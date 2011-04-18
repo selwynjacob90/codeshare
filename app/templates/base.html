@@ -10,7 +10,7 @@
 {% block body %}
 <!-- wrap starts here -->
 <div id="wrap">
-	
+	{% block header %}
 	<div id="header">				
 			
 		<h1 id="logo">Code<span class="green">share</span><span class="gray"></span></h1>	
@@ -20,22 +20,27 @@
 			<p><input type="text" name="search_query" class="textbox" />
   			<input type="submit" name="search" class="button" value="Search" /></p>
 		</form>
-			
+	 
+	   
 		<!-- Menu Tabs -->
 		<ul>
+		   
 			<li id="current"><a href="/snippets/add"><span>New Paste</span></a></li>
-			<li><a href="index.html"><span>Login</span></a></li>
-			<li><a href="index.html"><span>Register</span></a></li>
+			{% if user.is_authenticated %}
+			<li><a href="{% url auth_logout %}"><span>Log out</span></a> </li>
+			{% else %}
+	    <li><a href="{% url auth_login %}"><span>Log in</a></li>
+      <li><a href="{% url registration_register %}">Register</a></p>
+	    {% endif %}
 			<li><a href="index.html"><span>About</span></a></li>			
 		</ul>	
-													
+	 {% endblock %}												
 	</div>	
 				
 	<!-- content-wrap starts here -->
 	<div id="content-wrap">		
 											
 	<img src="/site_media/images/header.jpg" width="820" height="120" alt="headerphoto" class="no-border" />
-		
 		<div id="sidebar" >							
 				
 			<h1>Sidebar Menu</h1>
@@ -47,7 +52,10 @@
         <li><a href="{% url app_top_languages %}">Top Languages</a></li>
         <li><a href="{% url app_top_authors %}">Top Authors</a></li>
         <li><a href="{% url app_most_bookmarked %}">Most Bookmarked</a></li>
-        <li><a href="{% url app_user_bookmarks %}">User bookmarks</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="{% url app_user_bookmarks %}">My bookmarks</a></li>
+        <li><a href="{% url auth_password_change %}">Change password</a></li>
+        {% endif %}
 			</ul>		
 			
 			<h1>Note</h1>
@@ -73,7 +81,7 @@
 	<div class="footer-right">
 		<p class="align-right">
 		<a href="index.html">Home</a>&nbsp;|&nbsp;
-  		<a href="index.html">SiteMap</a>&nbsp;|&nbsp;
+ 		<a href="index.html">SiteMap</a>&nbsp;|&nbsp;
    	<a href="index.html">RSS Feed</a>
 		</p>
 	</div>
@@ -86,4 +94,5 @@
 {% endblock %}
 </body>
 </html>
+
 

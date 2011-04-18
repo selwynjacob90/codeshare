@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block main %}
+<div id="main">
+<h1>Sign <span class="green"> Up </span></h1>
+<form method="post" action=".">
+  {{ form.as_p }}
+
+  <input type="submit" value="Submit" />
+</form>
+</div>
+{% endblock %}

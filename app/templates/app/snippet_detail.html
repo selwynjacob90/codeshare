@@ -45,7 +45,7 @@ function open_add() {
  			<p class="post-footer align-right">
  			 {% if_rated user object %}
          {% get_rating user object as rating %}
-         <a href="" class="comments"/> {{ rating.get_rating_display }}</a>
+         <span  class="comments"/> This is {{ rating.get_rating_display }}</span>
        {% else %}
             <a href="{% url app_snippet_rate object.id %}?rating=1" class="comments">useful</a> or 
             <a href="{% url app_snippet_rate object.id %}?rating=-1" class="comments">not useful</a> 
