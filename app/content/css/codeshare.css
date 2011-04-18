@@ -44,6 +44,7 @@ ul span, ol span {
 .link {
   color:#6297BC;
 }
+
 /* images */
 img {
 	border: 2px solid #CCC;
@@ -61,7 +62,7 @@ a img {
   border: 2px solid #568EB6;
 }
 a:hover img {  
-  border: 2px solid #CCC !important; /* IE fix*/
+  border: 2px solid #CCC !important; 
   border: 2px solid #568EB6;
 }
 
@@ -134,6 +135,7 @@ input.button {
 	background: #FFF; 
 	padding: 2px 3px; 
 	color: #4284B0;	
+	
 }
 select {
   font: bold 1em Arial, Sans-serif; 
@@ -166,6 +168,8 @@ form.searchform input.button {
 	width: 60px;
 	vertical-align: top;
 }
+
+
 
 /***********************
 	  LAYOUT
@@ -272,6 +276,11 @@ form.searchform input.button {
 	color: #339900;
 	border-left:4px solid #9EC630;
 }
+h1.center{
+  position:absolute;
+  left:760px;
+
+}
 /* Footer */
 #footer { 
 	clear: both; 
@@ -324,7 +333,6 @@ form.searchform input.button {
    padding:6px 15px 3px 8px;
    color: #FFF;
 }
-/* Commented Backslash Hack hides rule from IE5-Mac \*/
 #header a span {float:none;}
 /* End IE5-Mac hack */
 #header a:hover span {
@@ -363,4 +371,5 @@ form.searchform input.button {
        border: 1px solid #f2f2f2;  
        border-left: 4px solid #4284B0;
 }
+
 
