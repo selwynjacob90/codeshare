@@ -20,6 +20,17 @@ DATABASES = {
     }
 }
 
+#django registration settings
+ACCOUNT_ACTIVATION_DAYS = 7
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'slingshot316@gmail.com'
+EMAIL_HOST_PASSWORD = 'historymaker'
+EMAIL_PORT = 587
+LOGIN_REDIRECT_URL = '/'
+
+
+
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
@@ -92,10 +103,12 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.markup',
+    'django.contrib.humanize',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     'app',
     'tagging',
+    'registration',
 )
