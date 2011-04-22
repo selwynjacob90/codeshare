@@ -18,7 +18,10 @@ def add_snippet(request):
         form = SnippetForm(data=request.POST)
         if form.is_valid():
             new_snippet = form.save(commit=False)
-            new_snippet.author = request.user
+            if request.user.is_authenticated():
+                new_snippet.author = request.user
+            else: 
+                new_snippet.author = None
             new_snippet.save()
             return HttpResponseRedirect(new_snippet.get_absolute_url())
     else:
@@ -26,7 +29,7 @@ def add_snippet(request):
     return render_to_response('app/snippet_form.html', 
                                 { 'form': form, 'add': True },
                                 context_instance=RequestContext(request))
-add_snippet = login_required(add_snippet)
+#add_snippet = login_required(add_snippet)
 
 @csrf_exempt 
 def edit_snippet(request, snippet_id):

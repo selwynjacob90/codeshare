@@ -42,7 +42,7 @@ class Snippet(models.Model):
     #Core Fields
     title = models.CharField(max_length=255)
     language = models.ForeignKey(Language)
-    author = models.ForeignKey(User)
+    author = models.ForeignKey(User,blank=True,null=True)
     description = models.TextField()
     description_html = models.TextField(editable=False)
     code = models.TextField()
@@ -90,7 +90,7 @@ class Snippet(models.Model):
 
 class Bookmark(models.Model):
     snippet = models.ForeignKey(Snippet)
-    user = models.ForeignKey(User, related_name='app_bookmarks')
+    user = models.ForeignKey(User, related_name='app_bookmarks',blank=True,null=True)
     date = models.DateTimeField(editable=False)
     
     class Meta:
@@ -110,7 +110,7 @@ class Rating(models.Model):
     RATING_CHOICES = ((RATING_UP, 'useful'),
                       (RATING_DOWN, 'not useful'))
     snippet = models.ForeignKey(Snippet)
-    user = models.ForeignKey(User, related_name='app_rating')
+    user = models.ForeignKey(User, related_name='app_rating',blank=True,null=True)
     rating = models.IntegerField(choices=RATING_CHOICES)
     date = models.DateTimeField()
     
