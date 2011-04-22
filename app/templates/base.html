@@ -29,10 +29,10 @@
 			{% if user.is_authenticated %}
 			<li><a href="{% url auth_logout %}"><span>Log out</span></a> </li>
 			{% else %}
-	    <li><a href="{% url auth_login %}"><span>Log in</a></li>
-      <li><a href="{% url registration_register %}">Register</a></p>
+	    <li><a href="{% url auth_login %}"><span>Log in</span></a></li>
+      <li><a href="{% url registration_register %}"><span>Register</span></a></p>
 	    {% endif %}
-			<li><a href="index.html"><span>About</span></a></li>			
+			<li><a href=""><span>About</span></a></li>			
 		</ul>	
 	 {% endblock %}												
 	</div>	
@@ -43,7 +43,6 @@
 	<img src="/site_media/images/header.jpg" width="820" height="120" alt="headerphoto" class="no-border" />
 		<div id="sidebar" >							
 				
-			<h1>Sidebar Menu</h1>
 			<ul class="sidemenu">
 				<li><a href="/">Home</a></li>
         <li><a href="{% url app_snippet_list %}">Browse</a></li>
